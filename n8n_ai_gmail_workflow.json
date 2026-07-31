@@ -1,0 +1,111 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8a2a197c-bddd-46ad-9825-8980b54164ab",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "Resume el siguiente texto en 3 puntos clave"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "c0e59ee4-664b-4273-bb06-6287f5955062",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "9Ys59ssQpxSc5SLz",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "olvincc08@gmail.com",
+        "subject": "Automatic Report",
+        "message": "={{ $json.output[0].content[0].text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        560,
+        0
+      ],
+      "id": "00aa07f5-f818-4aac-a8a4-74164e4ba26e",
+      "name": "Send a message",
+      "webhookId": "b9c8249d-44cd-406b-8aa7-c518fd89da7c",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "uQp3KvpcQYrIWGED",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "7f67f6e9-50f6-42d3-8290-75144c043505",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7a046ec92e5efa078b722f6ad64be5322541780348cc4eab5f591bb253ba6a9b"
+  },
+  "nodeGroups": [],
+  "id": "BmSMCsbB37wuM7KW",
+  "tags": []
+}
+
