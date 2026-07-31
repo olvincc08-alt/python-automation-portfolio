@@ -4,6 +4,9 @@ This repository showcases a dual approach to building AI-powered automated repor
 1. **Low-Code/No-Code Workflow**: Built in **n8n**, integrating OpenAI LLMs and Gmail.
 2. **Scripting & Workflow Automation**: Handled via custom **Python** scripts.
 
+<img width="902" height="399" alt="n8n-preview png" src="https://github.com/user-attachments/assets/52f3383e-4d8b-4195-a140-5282da4bba40" />
+
+
 ---
 
 Repository Structure
